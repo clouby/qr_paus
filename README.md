@@ -1,10 +1,31 @@
-# PiOverflow
+# QR Paus
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+## Optional:
+If it's the first time,  try `npm install`
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --host 0.0.0.0` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Create credentials about Firebase ( Realtime Database )
+
+Generate your own keys on [Firebase Console](https://firebase.google.com) and paste your creds here:
+
+```js
+ src/enviroments/enviroments.ts
+---
+  firebase: {
+    apiKey: "API Here",
+    authDomain: "example.firebaseapp.com",
+    databaseURL: "https://example.firebaseio.com",
+    projectId: "example",
+    storageBucket: "example.appspot.com",
+    messagingSenderId: "555555"
+  }
+
+```
 
 ## Code scaffolding
 
