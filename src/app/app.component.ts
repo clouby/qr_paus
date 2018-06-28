@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = '+';
+
+  constructor( private authService:AuthService ) {}
+
+  get isLoggedIn() {
+    return this.authService.isLoggedIn;
+  }
+
+  get fullName() {
+    return this.authService.current_user.full_name;
+  }
+
+  logOut() {
+    this.authService.logOut();
+  }
 }

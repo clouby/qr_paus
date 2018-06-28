@@ -1,0 +1,9 @@
+<div *ngIf="itemsQR.length === 0">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+<mat-grid-list cols="3" rowHeight="2:2">
+    <mat-grid-tile *ngFor="let item of itemsQR">
+        <h1>{{ item.name }}</h1>
+        <qrcode [qrdata]="item.id" [size]="200" [level]="'M'"></qrcode>
+    </mat-grid-tile>
+  </mat-grid-list>

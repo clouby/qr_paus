@@ -1,0 +1,95 @@
+<!-- <button mat-raised-button (click)="addAddress()">Add</button> -->
+    <div class="table-container mat-elevation-z8  ">
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Item data
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type your new item
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          <form [formGroup]="newItemForm" novalidate>
+            
+              <mat-grid-list cols="2" rowHeight="100px">
+                 
+                  <mat-grid-tile>
+                        <mat-form-field class="almost-full">
+                            <input matInput placeholder="Name" formControlName="name">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    
+                    <mat-grid-tile>     
+                        <mat-form-field class="almost-full">
+                            <input matInput placeholder="unknown">
+                        </mat-form-field>
+                    </mat-grid-tile>
+      
+                  </mat-grid-list>
+                  
+
+                  <button type="button" mat-raised-button [disabled]="!newItemForm.valid" (click)="addItem()" > Add </button>
+                  <!-- <button type="button" mat-raised-button (click)="newItemForm.reset()" > Reset </button> -->
+          </form>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div class="table-container mat-elevation-z8">
+      <div class="header"> {{ indexZone }} 
+        <span class="date">{{ this.nowDate }}</span>
+      </div>
+        <mat-table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+            
+          <!-- UUID Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> UUID </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell  *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell  *matCellDef="let row"> {{row.name}} </mat-cell>
+          </ng-container>
+
+           <!-- Active Column -->
+           <ng-container matColumnDef="active">
+              <mat-header-cell  *matHeaderCellDef> Status </mat-header-cell>
+              <mat-cell  *matCellDef="let row"> 
+                  <mat-icon [class.active]="true" >{{ row.active ? 'visibility' : 'visibility_off' }}</mat-icon>  
+              </mat-cell>
+            </ng-container>
+
+          <!-- Created At Column -->
+          <ng-container matColumnDef="created_at">
+              <mat-header-cell  *matHeaderCellDef> Created At </mat-header-cell>
+              <mat-cell  *matCellDef="let row"> {{row.created_at}} </mat-cell>
+            </ng-container>
+
+          <!-- Updated At Column -->
+          <ng-container matColumnDef="updated_at">
+              <mat-header-cell  *matHeaderCellDef> Updated At </mat-header-cell>
+              <mat-cell  *matCellDef="let row"> {{row.updated_at}} </mat-cell>
+            </ng-container>
+      
+          <mat-header-row   *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" [class.row-desactive]="!row.active" [@state]="row.active" >
+
+          </mat-row>
+          
+        </mat-table>
+          <!-- <mat-progress-spinner
+            [mode]="'indeterminate'">
+          </mat-progress-spinner> [@state]="row.name" -->
+          <div *ngIf="displayedColumns.length === 0">
+              <mat-progress-bar mode="query"></mat-progress-bar>
+          </div>
+          
+        </div>
+

@@ -1,0 +1,25 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    width: 80%;
+    overflow: auto;
+    margin: 70px auto;
+  }
+
+  .header {
+    padding: 15px 23px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+  }
+
+  .header span {
+    float: right;
+  }
+
+  .mat-row.row-desactive > * {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    
+  }
